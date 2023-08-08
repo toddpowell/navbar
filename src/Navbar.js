@@ -1,25 +1,26 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   return (
     <nav className='nav'>
-        <a href="/" className='site-title'>Site Name</a>
+        <Link  to="/" className='site-title'>Site Name</Link>
         <ul>
             {/* <li><a href="/pricing" className='site-title'>Pricing</a></li>
             <li><a href="/about" className='site-title'>About</a></li> */}
-            <CustomLink href="/pricing">Pricing</CustomLink>
-            <CustomLink href="/about">About</CustomLink>
+            <CustomLink to="/pricing">Pricing</CustomLink>
+            <CustomLink to="/about">About</CustomLink>
         </ul>
     </nav>
   )
 }
 
-function CustomLink({ href, children, ...props}) {
+function CustomLink({ to, children, ...props}) {
     const path = window.location.pathname;
 
     return (
-        <li className={path === href ? "active" : ""}>
-            <a href={href} {...props}>{children}</a>
+        <li className={path === to ? "active" : ""}>
+            <Link to={to} {...props}>{children}</Link>
         </li>
     )
 }
